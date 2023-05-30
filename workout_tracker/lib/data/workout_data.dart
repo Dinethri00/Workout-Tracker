@@ -8,7 +8,23 @@ class WorkoutData extends ChangeNotifier{
     Workout(
       name: "Upper Body",
       exercises: [
-        Exercise(name: "Bicep Curls", weight: "10", reps: "10", sets: "3")
+        Exercise(
+            name: "Bicep Curls",
+            weight: "10",
+            reps: "10",
+            sets: "3"
+        ),
+      ],
+    ),
+    Workout(
+      name: "Lower Body",
+      exercises: [
+        Exercise(
+            name: "Squats",
+            weight: "10",
+            reps: "10",
+            sets: "3"
+        ),
       ],
     )
   ];
