@@ -14,20 +14,35 @@ class _HomePageState extends State<HomePage> {
 
   void createNewWorkout(){
     showDialog(context: context,
-        builder: (context) =>const AlertDialog(
+        builder: (context) => AlertDialog(
           title: Text
             ("Create New Workout"),
+          content: TextField(),
+          actions: [
+            MaterialButton(
+              onPressed: save,
+              child: Text("save"),
+            ),
+            MaterialButton(
+              onPressed: cancel,
+              child: Text("cancel"),
+            ),
+          ],
         ),
     );
 
   }
+
+  void save(){}
+  void cancel(){}
+
 
   @override
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
-          title: const Text('Workout Tracker'),
+          title: Text('Workout Tracker'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: createNewWorkout,
