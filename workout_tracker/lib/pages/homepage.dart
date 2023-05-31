@@ -11,31 +11,58 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late TextEditingController newWorkoutNameController; // Declare the controller
 
-  void createNewWorkout(){
-    showDialog(context: context,
-        builder: (context) => AlertDialog(
-          title: Text
-            ("Create New Workout"),
-          content: TextField(),
-          actions: [
-            MaterialButton(
-              onPressed: save,
-              child: Text("save"),
-            ),
-            MaterialButton(
-              onPressed: cancel,
-              child: Text("cancel"),
-            ),
-          ],
-        ),
-    );
-
+  @override
+  void initState() {
+    super.initState();
+    newWorkoutNameController = TextEditingController(); // Initialize the controller
   }
 
-  void save(){}
-  void cancel(){}
+  @override
+  void dispose() {
+    newWorkoutNameController.dispose(); // Dispose the controller when the state is disposed
+    super.dispose();
+  }
 
+  void createNewWorkout() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Create New Workout"),
+        content: TextField(
+          controller: newWorkoutNameController,
+        ),
+        actions: [
+          MaterialButton(
+            onPressed: save,
+            child: Text("save"),
+          ),
+          MaterialButton(
+            onPressed: cancel,
+            child: Text("cancel"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void save() {
+    String newWorkoutName = newWorkoutNameController.text;
+    Provider.of<WorkoutData>(context, listen: false).addWorkout(newWorkoutName);
+
+    Navigator.pop(context);
+    clear();
+  }
+
+  void cancel() {
+    Navigator.pop(context);
+    clear();
+  }
+
+  void clear() {
+    newWorkoutNameController.clear(); // Clear the text field
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +76,11 @@ class _HomePageState extends State<HomePage> {
           child: const Icon(Icons.add),
         ),
         body: ListView.builder(
-            itemCount: value.getWorkoutList().length,
-            itemBuilder: (context, index) =>  ListTile(
-                  title: Text(value.getWorkoutList()[index].name),
-                )),
+          itemCount: value.getWorkoutList().length,
+          itemBuilder: (context, index) => ListTile(
+            title: Text(value.getWorkoutList()[index].name),
+          ),
+        ),
       ),
     );
   }
