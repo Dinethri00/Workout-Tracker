@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../data/workout_data.dart';
+import 'workout_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,15 +37,20 @@ class _HomePageState extends State<HomePage> {
         actions: [
           MaterialButton(
             onPressed: save,
-            child: Text("save"),
+            child: const Text("save"),
           ),
           MaterialButton(
             onPressed: cancel,
-            child: Text("cancel"),
+            child: const Text("cancel"),
           ),
         ],
       ),
     );
+  }
+
+  void goToWorkoutPage(String workoutName){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkoutPage(workoutName: workoutName),));
+
   }
 
   void save() {
@@ -69,7 +75,7 @@ class _HomePageState extends State<HomePage> {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
-          title: Text('Workout Tracker'),
+          title: const Text('Workout Tracker'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: createNewWorkout,
@@ -79,8 +85,12 @@ class _HomePageState extends State<HomePage> {
           itemCount: value.getWorkoutList().length,
           itemBuilder: (context, index) => ListTile(
             title: Text(value.getWorkoutList()[index].name),
+            trailing: IconButton(icon: const Icon(Icons.arrow_forward_ios),
+              onPressed: () =>
+              goToWorkoutPage(value.getWorkoutList()[index].name),
           ),
         ),
+      ),
       ),
     );
   }
