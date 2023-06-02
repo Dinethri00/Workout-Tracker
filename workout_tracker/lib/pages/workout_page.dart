@@ -17,12 +17,25 @@ class _WorkoutPageState extends State<WorkoutPage> {
         .checkOffExercise(workoutName, exerciseName);
   }
 
+  void createNewExercise(){
+    showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text('Add new exercise'),
+        ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
           title: Text(widget.workoutName),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => createNewExercise,
+          child: Icon(Icons.add),
         ),
         body: ListView.builder(
           itemCount: value.numberOfExercisesInWorkout(widget.workoutName),
@@ -47,15 +60,14 @@ class _WorkoutPageState extends State<WorkoutPage> {
                 .getRelevantWorkout(widget.workoutName)
                 .exercises[index]
                 .isCompleted,
-            onCheckBoxChanged: (val)
-            {onCheckBoxChanged(
+            onCheckBoxChanged: (val) => onCheckBoxChanged(
               widget.workoutName,
               value
                   .getRelevantWorkout(widget.workoutName)
                   .exercises[index]
                   .name,
-            );
-            }
+            ),
+
           ),
         ),
       ),
