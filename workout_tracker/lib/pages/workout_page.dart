@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:workout_tracker/components/exercise_tile.dart';
 import 'package:workout_tracker/data/workout_data.dart';
 
 class WorkoutPage extends StatefulWidget {
@@ -11,6 +12,11 @@ class WorkoutPage extends StatefulWidget {
 }
 
 class _WorkoutPageState extends State<WorkoutPage> {
+  void onCheckBoxChanged(String workoutName, String exerciseName) {
+    Provider.of<WorkoutData>(context, listen: false)
+        .checkOffExercise(workoutName, exerciseName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
@@ -19,13 +25,39 @@ class _WorkoutPageState extends State<WorkoutPage> {
           title: Text(widget.workoutName),
         ),
         body: ListView.builder(
-            itemCount: value.numberOfExercisesInWorkout(widget.workoutName),
-            itemBuilder: (context, index) => ListTile(
-                  title: Text(value
-                      .getRelevantWorkout(widget.workoutName)
-                      .exercises[index]
-                      .name),
-                )),
+          itemCount: value.numberOfExercisesInWorkout(widget.workoutName),
+          itemBuilder: (context, index) => ExerciseTile(
+            exerciseName: value
+                .getRelevantWorkout(widget.workoutName)
+                .exercises[index]
+                .name,
+            weight: value
+                .getRelevantWorkout(widget.workoutName)
+                .exercises[index]
+                .weight,
+            reps: value
+                .getRelevantWorkout(widget.workoutName)
+                .exercises[index]
+                .reps,
+            sets: value
+                .getRelevantWorkout(widget.workoutName)
+                .exercises[index]
+                .sets,
+            isCompleted: value
+                .getRelevantWorkout(widget.workoutName)
+                .exercises[index]
+                .isCompleted,
+            onCheckBoxChanged: (val)
+            {onCheckBoxChanged(
+              widget.workoutName,
+              value
+                  .getRelevantWorkout(widget.workoutName)
+                  .exercises[index]
+                  .name,
+            );
+            }
+          ),
+        ),
       ),
     );
   }
