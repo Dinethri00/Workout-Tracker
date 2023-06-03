@@ -73,11 +73,11 @@ class WorkoutData extends ChangeNotifier{
     return relevantWorkout;
   }
 
-  Exercise getRelevantExercise(String workoutName, String exerciseName) {
-    Workout relevantWorkout = getRelevantWorkout(workoutName);
-
-    Exercise relevantExercise = relevantWorkout.exercises
-        .firstWhere((exercise) => exercise.name == exerciseName);
-    return relevantExercise;
-  }
+  // Exercise getRelevantExercise(String workoutName, String exerciseName) {
+  //   Workout relevantWorkout = getRelevantWorkout(workoutName);
+  //
+  //   Exercise relevantExercise = relevantWorkout.exercises
+  //       .firstWhere((exercise) => exercise.name == exerciseName);
+  //   return relevantExercise;
+  // }
 }

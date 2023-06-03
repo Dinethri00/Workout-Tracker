@@ -37,6 +37,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
           onPressed: () => createNewExercise,
           child: Icon(Icons.add),
         ),
+
         body: ListView.builder(
           itemCount: value.numberOfExercisesInWorkout(widget.workoutName),
           itemBuilder: (context, index) => ExerciseTile(
