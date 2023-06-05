@@ -26,21 +26,30 @@ class ExerciseTile extends StatelessWidget {
         title: Text(exerciseName),
         subtitle: Row(
           children: [
-            SizedBox(height: 80,),
+            SizedBox(
+              height: 80,
+            ),
             //weight
-            Chip(label: Text("${weight}kg"),
+            Chip(
+              label: Text("${weight}kg"),
             ),
 
             //reps
-            Chip(label: Text("$reps reps"),
+            Chip(
+              label: Text("$reps reps"),
             ),
 
             //sets
-            Chip(label: Text("$sets sets"),),
+            Chip(
+              label: Text("$sets sets"),
+            ),
           ],
-        ), trailing: Checkbox(value: isCompleted,
-      onChanged: (value)=> onCheckBoxChanged!(value),
-      ),
+        ),
+        trailing: Checkbox(
+          value: isCompleted,
+          activeColor: Colors.black,
+          onChanged: (value) => onCheckBoxChanged!(value),
+        ),
       ),
     );
   }
