@@ -41,11 +41,11 @@ class _HomePageState extends State<HomePage> {
         actions: [
           MaterialButton(
             onPressed: save,
-            child: const Text("save"),
+            child: const Text("Save"),
           ),
           MaterialButton(
             onPressed: cancel,
-            child: const Text("cancel"),
+            child: const Text("Cancel"),
           ),
         ],
       ),
@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, value, child) => Scaffold(
         backgroundColor: Colors.grey[500],
         appBar: AppBar(
+          backgroundColor: Colors.black,
           title: const Text('Workout Tracker'),
         ),
         floatingActionButton: FloatingActionButton(
