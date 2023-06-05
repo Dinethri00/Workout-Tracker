@@ -11,7 +11,7 @@ void main() async {
 
 
   //open a hive box
-  await Hive.openBox("workout_database");
+  await Hive.openBox("workout_database1");
 
 
   runApp(const MyApp());

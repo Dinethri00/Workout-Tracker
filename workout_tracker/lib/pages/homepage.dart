@@ -12,18 +12,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late TextEditingController newWorkoutNameController; // Declare the controller
+  final newWorkoutNameController = TextEditingController(); // Declare the controller
 
   @override
   void initState() {
     super.initState();
-    newWorkoutNameController = TextEditingController(); // Initialize the controller
-  }
 
+
+    Provider.of<WorkoutData>(context, listen: false).initalizedWorkoutList();// Initialize the controller
+  }
+  //final newWorkoutNameController = TextEditingController();
   @override
   void dispose() {
     newWorkoutNameController.dispose(); // Dispose the controller when the state is disposed
     super.dispose();
+
   }
 
   void createNewWorkout() {
