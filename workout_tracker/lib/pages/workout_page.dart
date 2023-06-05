@@ -60,11 +60,11 @@ class _WorkoutPageState extends State<WorkoutPage> {
           actions: [
             MaterialButton(
               onPressed: save,
-              child: const Text("save"),
+              child: const Text("Save"),
             ),
             MaterialButton(
               onPressed: cancel,
-              child: const Text("cancel"),
+              child: const Text("Cancel"),
             ),
           ],
         ),
@@ -103,9 +103,11 @@ class _WorkoutPageState extends State<WorkoutPage> {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           title: Text(widget.workoutName),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
           onPressed: createNewExercise,
           child: Icon(Icons.add),
         ),

@@ -84,6 +84,7 @@ class _HomePageState extends State<HomePage> {
           title: const Text('Workout Tracker'),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
           onPressed: createNewWorkout,
           child: const Icon(Icons.add),
         ),
