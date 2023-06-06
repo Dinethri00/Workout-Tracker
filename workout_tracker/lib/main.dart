@@ -4,6 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:workout_tracker/data/workout_data.dart';
 import 'pages/homepage.dart';
+import 'splash_screen.dart';
 
 void main() async {
   //initialize hive
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       create: (context) => WorkoutData(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        //home: HomePage(),
+        home: const Splash(),
       ),
     );
   }
