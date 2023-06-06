@@ -31,13 +31,6 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 8), () {
-      // After the delay, navigate to the home page
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
-    });
   }
 
   @override
@@ -51,7 +44,7 @@ class _SplashState extends State<Splash> {
             Lottie.network(
               'https://assets9.lottiefiles.com/packages/lf20_il9wfcq9.json',
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
@@ -59,7 +52,17 @@ class _SplashState extends State<Splash> {
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
-              child: Text('Get Started'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white, backgroundColor: Colors.black,
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text('Get Started',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.normal),),
             ),
           ],
         ),
