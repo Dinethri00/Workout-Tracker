@@ -26,7 +26,7 @@ class ExerciseTile extends StatelessWidget {
         title: Text(exerciseName),
         subtitle: Row(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 80,
             ),
             //weight

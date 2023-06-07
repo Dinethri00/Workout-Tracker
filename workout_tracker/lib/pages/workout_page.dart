@@ -27,7 +27,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Add new exercise'),
+          title: const Text('Add new exercise'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -109,7 +109,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.black,
           onPressed: createNewExercise,
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
 
         body: ListView.builder(

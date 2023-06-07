@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+//import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:workout_tracker/data/workout_data.dart';
-import 'pages/homepage.dart';
 import 'splash_screen.dart';
 
 void main() async {
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         //home: HomePage(),
-        home: const Splash(),
+        home:  Splash(),
       ),
     );
   }
