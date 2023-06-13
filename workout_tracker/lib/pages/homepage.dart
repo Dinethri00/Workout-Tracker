@@ -208,20 +208,20 @@ class _HomePageState extends State<HomePage> {
             // Heat map
             MyHeatMap(datasets: value.heatMapDataSet, startDateYYYYMMDD: value.getStartDate()),
             // Workout list
-            // ListView.builder(
-            //   padding: const EdgeInsets.all(20),
-            //   shrinkWrap: true,
-            //   physics: const NeverScrollableScrollPhysics(),
-            //   itemCount: value.getWorkoutList().length,
-            //   itemBuilder: (context, index) => Card(
-            //     color: Colors.black,
-            //     child: ListTile(
-            //       title: Text(
-            //         value.getWorkoutList()[index].name,
-            //         style: const TextStyle(
-            //           color: Colors.white,
-            //         ),
-            //       ),
+            ListView.builder(
+              padding: const EdgeInsets.all(20),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: value.getWorkoutList().length,
+              itemBuilder: (context, index) => Card(
+                color: Colors.black,
+                child: ListTile(
+                  title: Text(
+                    value.getWorkoutList()[index].name,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
                   trailing: IconButton(
                     color: Colors.white,
                     icon: const Icon(Icons.arrow_forward_ios),
